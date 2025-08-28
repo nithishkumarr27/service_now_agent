@@ -1,0 +1,81 @@
+# # FastAPI and Web Server
+# fastapi==0.104.1
+# uvicorn[standard]==0.24.0
+
+# # Configuration and Environment
+# python-dotenv==1.0.0
+# pydantic==2.5.0
+# PyYAML==6.0.1
+
+# # Google Generative AI (Gemini)
+# google-generativeai==0.3.2
+
+# # LangChain and LangGraph
+# langchain==0.1.0
+# langchain-google-genai==0.0.5
+# langgraph==0.0.20
+
+# # HTTP Client
+# httpx==0.25.2
+# requests==2.31.0
+
+# # Background Task Scheduling
+# APScheduler==3.10.4
+
+# # Email Processing
+# imaplib2==3.6
+# secure-smtplib==0.1.1
+
+# # Additional utilities
+# email-validator==2.1.0
+# python-multipart==0.0.6
+
+# # Development and Testing (optional)
+# pytest==7.4.3
+# pytest-asyncio==0.21.1
+# black==23.11.0
+# flake8==6.1.0
+
+# # Production deployment (optional)
+# gunicorn==21.2.0
+
+# FastAPI and Web Server
+fastapi
+uvicorn[standard]
+
+# Configuration and Environment
+python-dotenv
+pydantic
+PyYAML
+
+# Google Generative AI (Gemini)
+google-generativeai
+
+# LangChain and LangGraph
+langchain
+langchain-google-genai
+langgraph
+
+# HTTP Client
+httpx
+requests
+
+# Background Task Scheduling
+APScheduler
+
+# Email Processing
+imaplib2
+secure-smtplib
+
+# Additional utilities
+email-validator
+python-multipart
+
+# Development and Testing (optional)
+pytest
+pytest-asyncio
+black
+flake8
+
+# Production deployment (optional)
+gunicorn
