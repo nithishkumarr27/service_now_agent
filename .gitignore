@@ -1,0 +1,52 @@
+# Python cache / build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE / Editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs / Debug
+*.log
+logs/
+debug.log
+
+# Local configs / secrets
+config.json
+*.env
+.env.*
+secrets.json
+
+# Jupyter / Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Coverage / Testing
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+htmlcov/
+
+# ServiceNow / project specific
+# (add here if you generate any temporary files for API responses)
+tmp/
