@@ -79,3 +79,6 @@ flake8
 
 # Production deployment (optional)
 gunicorn
+
+#UI
+streamlit
