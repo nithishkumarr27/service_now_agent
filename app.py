@@ -326,67 +326,269 @@ class StreamlitUI:
             initial_sidebar_state="expanded"
         )
         
-        # Custom CSS
+        # Apply dark theme configuration
         st.markdown("""
         <style>
+        /* Force dark theme for Streamlit */
+        .stApp {
+            background-color: #0e1117 !important;
+        }
+        
+        /* Ensure text is visible on dark background */
+        .main .block-container {
+            background-color: #0e1117 !important;
+            color: #e2e8f0 !important;
+        }
+        
+        /* Dark theme for all text elements */
+        h1, h2, h3, h4, h5, h6, p, span, div {
+            color: #e2e8f0 !important;
+        }
+        
+        /* Dark theme for sidebar */
+        .css-1d391kg {
+            background-color: #1e2127 !important;
+        }
+        
+        /* Dark theme for main content area */
+        .main .block-container {
+            background-color: #0e1117 !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        # Custom CSS - Dark Theme
+        st.markdown("""
+        <style>
+        /* Dark theme base colors */
+        :root {
+            --dark-bg: #0e1117;
+            --dark-card: #1e2127;
+            --dark-border: #2d3748;
+            --dark-text: #e2e8f0;
+            --dark-text-secondary: #a0aec0;
+            --dark-accent: #667eea;
+            --dark-success: #48bb78;
+            --dark-warning: #ed8936;
+            --dark-error: #f56565;
+            --dark-info: #4299e1;
+        }
+        
+        /* Global dark theme overrides */
+        .stApp {
+            background-color: var(--dark-bg) !important;
+        }
+        
+        .main .block-container {
+            background-color: var(--dark-bg) !important;
+            color: var(--dark-text) !important;
+        }
+        
+        /* Agent cards with dark theme */
         .agent-card {
-            background-color: #f8f9fa;
+            background-color: var(--dark-card);
+            color: var(--dark-text);
             padding: 20px;
             border-radius: 12px;
             margin: 8px 0;
-            border-left: 5px solid #6c757d;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--dark-border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
+            border: 1px solid var(--dark-border);
         }
+        
+        .agent-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border-color: var(--dark-accent);
+        }
+        
         .agent-card.success {
-            border-left-color: #28a745;
-            background-color: #f8fff9;
+            border-left-color: var(--dark-success);
+            background-color: rgba(72, 187, 120, 0.1);
+            border-color: var(--dark-success);
         }
+        
         .agent-card.working {
-            border-left-color: #ffc107;
-            background-color: #fffbf0;
+            border-left-color: var(--dark-warning);
+            background-color: rgba(237, 137, 54, 0.1);
+            border-color: var(--dark-warning);
             animation: pulse 2s infinite;
         }
+        
         .agent-card.error {
-            border-left-color: #dc3545;
-            background-color: #fff5f5;
+            border-left-color: var(--dark-error);
+            background-color: rgba(245, 101, 101, 0.1);
+            border-color: var(--dark-error);
         }
+        
         @keyframes pulse {
             0% { opacity: 1; }
             50% { opacity: 0.7; }
             100% { opacity: 1; }
         }
+        
+        /* Step indicators with dark theme */
         .step-indicator {
-            background-color: white;
+            background-color: var(--dark-card);
+            color: var(--dark-text);
             padding: 15px;
             border-radius: 10px;
             margin: 8px 0;
-            border-left: 4px solid #e9ecef;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--dark-border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: 1px solid var(--dark-border);
         }
+        
         .step-indicator.active {
-            border-left-color: #ffc107;
-            background-color: #fffbf0;
+            border-left-color: var(--dark-warning);
+            background-color: rgba(237, 137, 54, 0.1);
+            border-color: var(--dark-warning);
             animation: pulse 2s infinite;
         }
+        
         .step-indicator.complete {
-            border-left-color: #28a745;
-            background-color: #f8fff9;
+            border-left-color: var(--dark-success);
+            background-color: rgba(72, 187, 120, 0.1);
+            border-color: var(--dark-success);
         }
+        
+        /* Metrics cards with dark theme */
         .metrics-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark-accent) 0%, #764ba2 100%);
             color: white;
             padding: 25px;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border: 1px solid var(--dark-accent);
         }
+        
+        .metrics-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+        
+        /* Workflow header with dark theme */
         .workflow-header {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, var(--dark-accent) 0%, #764ba2 100%);
             padding: 20px;
             border-radius: 12px;
             color: white;
             margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--dark-accent);
+        }
+        
+        /* Dark theme for Streamlit elements */
+        .stButton > button {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+            border-radius: 8px !important;
+        }
+        
+        .stButton > button:hover {
+            background-color: var(--dark-accent) !important;
+            border-color: var(--dark-accent) !important;
+            color: white !important;
+        }
+        
+        .stSelectbox > div > div {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        .stTextInput > div > div > input {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        .stCheckbox > div > label {
+            color: var(--dark-text) !important;
+        }
+        
+        .stProgressBar > div > div > div {
+            background-color: var(--dark-accent) !important;
+        }
+        
+        /* Dark theme for tabs */
+        .stTabs > div > div > div > div {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        .stTabs > div > div > div > div[data-baseweb="tab"] {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+        }
+        
+        .stTabs > div > div > div > div[data-baseweb="tab"][aria-selected="true"] {
+            background-color: var(--dark-accent) !important;
+            color: white !important;
+        }
+        
+        /* Dark theme for sidebar */
+        .css-1d391kg {
+            background-color: var(--dark-card) !important;
+        }
+        
+        /* Dark theme for containers and dividers */
+        .stContainer {
+            background-color: var(--dark-bg) !important;
+            color: var(--dark-text) !important;
+        }
+        
+        .stDivider {
+            border-color: var(--dark-border) !important;
+        }
+        
+        /* Dark theme for expanders */
+        .streamlit-expanderHeader {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        .streamlit-expanderContent {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        /* Dark theme for code blocks */
+        .stCodeBlock {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        /* Dark theme for alerts and messages */
+        .stAlert {
+            background-color: var(--dark-card) !important;
+            color: var(--dark-text) !important;
+            border: 1px solid var(--dark-border) !important;
+        }
+        
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--dark-border);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-accent);
         }
         </style>
         """, unsafe_allow_html=True)
